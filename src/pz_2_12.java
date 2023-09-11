@@ -8,7 +8,7 @@ public class pz_2_12 {
 
         if (a == 1 || (n == 1 && a != 11)) {
             System.out.println("на лугу пасётся " + a + "корова");
-        } else if (n >= 3 && n < 5) {
+        } else if (n >= 2 && n < 5) {
             System.out.println("на лугу пасётся " + a + "коровы");
         } else {
             System.out.println("на лугу пасётся " + a + "коров");
