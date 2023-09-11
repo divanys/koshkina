@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class pz_3_2_5 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        boolean is_0 = false;
         int prod = 0;
 
         int count = 0;
