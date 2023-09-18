@@ -11,10 +11,54 @@ m строк - вида "продукт1 - продукт2", где продук
 на который следует заменить продукт1. Гарантируется что любой продукт состоит из 1 слова.
 название продуктов написаны строчными буквами. Гарантируется, что продукты, на которые нужно выполнить замену,
 не встречаются изначально в тексте.
+*/
 
-Замените все продукты в поваренной книге Васи и выведите их построчно на экран.
-Если продукт, который следует заменить написан с большой буквы, то и замена тоже должна начинаться с большой буквы!
-Ввод:
+public class pz_7_5 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int numRecipes = scanner.nextInt();
+        scanner.nextLine();
+        String[][] recipes = new String[numRecipes][];
+
+        for (int i = 0; i < numRecipes; i++) {
+            recipes[i] = scanner.nextLine().split(" ");
+        }
+
+        int numReplacements = scanner.nextInt();
+        scanner.nextLine();
+        String[][] replacements = new String[numReplacements][2];
+
+        for (int i = 0; i < numReplacements; i++) {
+            String[] replacementPair = scanner.nextLine().split(" – ");
+            replacements[i][0] = replacementPair[0].toLowerCase();
+            replacements[i][1] = replacementPair[1];
+        }
+
+        for (String[] recipe : recipes) {
+            for (int i = 0; i < recipe.length; i++) {
+                String word = recipe[i].toLowerCase();
+                for (String[] replacement : replacements) {
+                    if (word.equals(replacement[0]) || word.equalsIgnoreCase(replacement[0])) {
+                        recipe[i] = replacement[1].substring(0, 1).toUpperCase() + replacement[1].substring(1);
+                    }
+                }
+            }
+            recipe[0] = recipe[0].substring(0, 1).toUpperCase() + recipe[0].substring(1);
+        }
+
+        for (int j = 0; j < recipes.length; j++) {
+            for (int i = 0; i < recipes[j].length; i++) {
+                System.out.print(recipes[j][i] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+}
+/*
+    Замените все продукты в поваренной книге Васи и выведите их построчно на экран.
+        Если продукт, который следует заменить написан с большой буквы, то и замена тоже должна начинаться с большой буквы!
+        Ввод:
 2
 Рецепт 1. Арахис 100гр, мороженое 200гр. Возьмите арахис и измельчите его. Посыпьте измельчённый арахис на мороженое.
 Рецепт 2. Клубника 100гр, сгущенка 3кг. Смешать, есть, радоваться жизни.
@@ -22,48 +66,7 @@ m строк - вида "продукт1 - продукт2", где продук
 арахис – колбаса
 клубника – вишня
 сгущенка – молоко
-Вывод:
-Рецепт 1. Колбаса 100гр, мороженое 200гр. Возьмите колбаса и измельчите его. Посыпьте измельчённый колбаса на мороженое.
-Рецепт 2. Вишня 100гр, молоко 3кг. Смешать, есть, радоваться жизни.
-*/
-
-import java.util.Scanner;
-
-public class pz_7_5 {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int recipeCount = Integer.parseInt(scanner.nextLine());
-        String[][] recipes = new String[recipeCount][];
-
-        for (int i = 0; i < recipeCount; i++) {
-            recipes[i] = scanner.nextLine().split(" ");
-        }
-
-        int substitutionCount = Integer.parseInt(scanner.nextLine());
-        String[][] substitutions = new String[substitutionCount][2];
-
-        for (int i = 0; i < substitutionCount; i++) {
-            String[] substitutionPair = scanner.nextLine().split(" - ");
-            substitutions[i][0] = substitutionPair[0].toLowerCase();
-            substitutions[i][1] = substitutionPair[1];
-        }
-
-        for (String[] recipe : recipes) {
-            for (int i = 0; i < recipe.length; i++) {
-                for (String[] substitution : substitutions) {
-                    if (recipe[i].toLowerCase().equals(substitution[0])) {
-                        recipe[i] = substitution[1];
-                    }
-                    else if (recipe[i].equalsIgnoreCase(substitution[0])) {
-                        recipe[i] = substitution[1].substring(0, 1).toUpperCase() + substitution[1].substring(1);
-                    }
-                }
-            }
-            StringBuilder resultRecipe = new StringBuilder();
-            for (String word : recipe) {
-                resultRecipe.append(word).append(" ");
-            }
-            System.out.println(resultRecipe.toString().trim());
-        }
-    }
-}
+        Вывод:
+        Рецепт 1. Колбаса 100гр, мороженое 200гр. Возьмите колбаса и измельчите его. Посыпьте измельчённый колбаса на мороженое.
+        Рецепт 2. Вишня 100гр, молоко 3кг. Смешать, есть, радоваться жизни.
+ */
