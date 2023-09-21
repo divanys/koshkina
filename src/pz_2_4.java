@@ -1,17 +1,14 @@
 import java.util.Scanner;
 
-public class pz_2_4 {
-    public static void main(String[]args) {
+public class pz_1_4 {
+    public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        int h = scan.nextInt();
-        int m = scan.nextInt();
-        int x = scan.nextInt();
-        int w = h * 3600 + m * 60;
-        int c = x * 3600;
-        if (c <= w) {
-            System.out.println("Успел!!!!!!!");
-        } else {
-            System.out.println("не успел!!!!!!!");
-        }
+        System.out.println("Введите длину: ");
+        int a = scan.nextInt();
+        System.out.println("Введите ширину: ");
+        int b = scan.nextInt();
+        System.out.println("Площадь равна " + a * b);
+        System.out.println("Периметр равен " + a * b * 2);
+
     }
 }

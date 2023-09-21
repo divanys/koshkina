@@ -1,15 +1,13 @@
 import java.util.Scanner;
 
-public class pz_2_8 {
+public class pz_1_8 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        int n = scan.nextInt();
-        int m = scan.nextInt();
-        int k = scan.nextInt();
-        if (k < (n * m) && ((k % n == 0) || (k % m == 0))) {
-            System.out.println("yes");
-        } else {
-            System.out.println("NO");
-        }
+        System.out.println("Введите число: ");
+        int chislo = scan.nextInt();
+        int d = chislo % 10;
+        int c = chislo / 100;
+        int b = chislo / 10 % 10;
+        System.out.println(d + c + b);
     }
 }

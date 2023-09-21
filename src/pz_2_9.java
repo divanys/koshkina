@@ -1,13 +1,14 @@
 import java.util.Scanner;
 
-public class pz_2_9 {
+public class pz_1_9 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        int n = scan.nextInt();
-        if (n >= 18){
-            System.out.println("есть 18");
-        } else {
-            System.out.println("нет 18");
-        }
+        System.out.println("Введите v: ");
+        int v = scan.nextInt();
+        System.out.println("Введите t: ");
+        int t = scan.nextInt();
+        int c = v * t % 109;
+        int d = (c + 109) % 109;
+        System.out.println(d);
     }
 }
