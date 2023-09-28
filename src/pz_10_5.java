@@ -37,7 +37,8 @@ public class pz_10_5 {
             }
         }
 
-        System.out.println(maximin(mass));
+        System.out.println("Максимальный элемент среди минимальных " +
+                "элементов каждой строки нашего массива это:\n" + maximin(mass));
 
     }
 
