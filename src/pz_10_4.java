@@ -9,9 +9,8 @@ public class pz_10_4 {
 
         System.out.println("Введите строку: ");
         String input = scanner.nextLine();
-        String sortedString = sortByLength(input);
         System.out.println("Отсортированная строка: ");
-        System.out.println(sortedString);
+        System.out.println(sortByLength(input));
     }
 
     // я не поняла ваших спойлеров, запуталась, вспомнила, что обсуждали с вами сортировку пузырьком, пропузырила код

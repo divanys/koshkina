@@ -15,7 +15,7 @@ public class pz_10_2 {
         System.out.println("Введите название фигуры: ");
         String figure = scanner.nextLine();
 
-        if (figure.toLowerCase().equals("круг")) {
+        if (figure.equalsIgnoreCase("круг")) {
             System.out.println("Введите радиус a: ");
         } else {
             System.out.println("Введите сторону a: ");
@@ -31,25 +31,25 @@ public class pz_10_2 {
         double perimeter = 0;
         double pi = 3.14;
 
-        if (figure.toLowerCase().equals("круг")) {
+        if (figure.equalsIgnoreCase("круг")) {
             perimeter = 2 * pi * a;
-        } else if (figure.toLowerCase().equals("квадрат")) {
+        } else if (figure.equalsIgnoreCase("квадрат")) {
             perimeter = 4 * a;
         }
 
-        System.out.println("Периметр " + figure + " равен " + Math.ceil(perimeter));
+        System.out.println("Периметр " + figure + "а равен " + Math.ceil(perimeter));
     }
 
     public static void area(String figure, int a) {
         double area = 0;
         double pi = 3.14;
 
-        if (figure.toLowerCase().equals("круг")) {
+        if (figure.equalsIgnoreCase("круг")) {
             area = pi * Math.pow(a, 2);
-        } else if (figure.toLowerCase().equals("квадрат")) {
+        } else if (figure.equalsIgnoreCase("квадрат")) {
             area = Math.pow(a, 2);
         }
 
-        System.out.println("Площадь " + figure + " равна " + Math.ceil(area));
+        System.out.println("Площадь " + figure + "а равна " + Math.ceil(area));
     }
 }
