@@ -48,9 +48,9 @@ public class pz_10_5 {
         for (int i = 0; i < mass.length; i++) {
             int min = mass[i][0];
 
-            for (int j = 0; j < mass[i].length; j++) {
-                if (mass[i][j] < min) {
-                    min = mass[i][j];
+            for (int j : mass[i]) {
+                if (j < min) {
+                    min = j;
                 }
             }
 
