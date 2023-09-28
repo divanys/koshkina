@@ -15,8 +15,8 @@ import java.util.Scanner;
 // 1 2 1 2 1 2 2 1 1
 // Вывод
 // 3
-// Класс Integer предоставляет различные константы и методы для работы с целыми числами.
-// Синтаксис: int имя_переменной = Integer.MIN_VALUE; int имя_переменной = Integer.MAX_VALUE;
+
+
 public class pz_10_5 {
     public static void main(String[] args) {
 
