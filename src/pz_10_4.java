@@ -1,7 +1,6 @@
 // Напишите функцию sortByLength, которая принимает как аргумент строку и сортирует её по длине слова.
 // Если длины слов одинаковы, то сортировать в алфавитном порядке. Содержание функции main менять запрещено.
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class pz_10_4 {
@@ -24,7 +23,8 @@ public class pz_10_4 {
         for (int i = 0; i < words.length - 1; i++) {
             for (int j = 0; j < words.length - i - 1; j++) {
                 if (words[j].length() > words[j + 1].length() ||
-                        (words[j].length() == words[j + 1].length() && words[j].compareTo(words[j + 1]) > 0)) {
+                        (words[j].length() == words[j + 1].length()
+                                && words[j].compareTo(words[j + 1]) > 0)) {
                     String temp = words[j];
                     words[j] = words[j + 1];
                     words[j + 1] = temp;
