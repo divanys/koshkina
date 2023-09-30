@@ -45,18 +45,19 @@ public class pz_11_3 {
             System.out.println("Строка, сумма которой кратна 7, не найдена.");
     }
 
+
+    public static int n = 0;
+    public static int sum_line = 0;
+
     public static int find_line7(int[][] mas) {
-        for (int i = 0; i < mas.length; i++) {
-            int sum_line = 0;
+        if (n == mas.length) return -1;
 
-            for (int j = 0; j < mas[i].length; j++) {
-                sum_line += mas[i][j];
-            }
+        for (int i = 0; i < mas[n].length; i++) sum_line += mas[n][i];
 
-            if (sum_line % 7 == 0) {
-                return i;
-            }
-        }
-        return -1;
+        if (sum_line % 7 == 0) return n;
+
+        n++;
+        sum_line = 0;
+        return find_line7(mas);
     }
 }
