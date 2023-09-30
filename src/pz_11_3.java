@@ -23,6 +23,8 @@ public class pz_11_3 {
 
         int[][] mas = new int[count][];
 
+        System.out.println("Введите данные: ");
+
         for (int i = 0; i < count; i++) {
             String line = scanner.nextLine();
             String[] numbers = line.split(" ");
