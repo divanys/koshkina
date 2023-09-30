@@ -23,13 +23,8 @@ public class pz_11_2 {
     }
 
     public static int second_count(int days, int hours, int minutes, int seconds) {
-        // day = 24; hours = 60; minutes = 60; one day is 86400 seconds
         if (days == 0 && hours == 0 && minutes == 0 && seconds == 0) return 0;
-
-        int secondsFromDays = days * 24 * 60 * 60;
-        int secondsFromHours = hours * 60 * 60;
-        int secondsFromMinutes = minutes * 60;
-
-        return secondsFromDays + secondsFromHours + secondsFromMinutes + seconds;
+        // day = 24; hours = 60; minutes = 60; f.e. one day is 86400 seconds
+        return days * 24 * 60 * 60 + hours * 60 * 60 + minutes * 60 + seconds;
     }
 }
