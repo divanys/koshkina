@@ -1,0 +1,2 @@
+public class pz_11_1 {
+}
