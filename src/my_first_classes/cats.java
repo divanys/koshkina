@@ -21,7 +21,7 @@ public class cats {
         System.out.printf("Age: %d \n", age);
     }
 
-    public void displayBreed() {
+    protected void displayBreed() {
         System.out.printf("Breed: %s \n", breed);
     }
 

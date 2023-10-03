@@ -28,9 +28,7 @@ class Person1 {
         this.name = name;
     }
 
-    public int getAge() {
-        return this.age;
-    }
+    public int getAge() { return this.age; }
 
     public void setAge(int age) {
         if (age > 0 && age < 110)
