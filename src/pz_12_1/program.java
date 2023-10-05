@@ -1,4 +1,4 @@
-package pz_12;
+package pz_12_1;
 
 public class program {
     public static void main(String[] args) {

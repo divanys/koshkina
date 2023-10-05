@@ -1,4 +1,4 @@
-package pz_12;
+package pz_12_1;
 
 // поля
 // - type - тип животного (String);
