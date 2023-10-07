@@ -21,19 +21,11 @@ class Bird extends Animal {
         setWinterFly(winterFly);
     }
 
-    public void setFly(boolean isFly) {
-        this.isFly = isFly;
-    }
-
     public void setArea(String area) {
         this.area = area;
     }
 
     public void setWinterFly(boolean winterFly) { this.winterFly = winterFly; }
-
-    public boolean isFly() {
-        return this.isFly;
-    }
 
     public String getArea() { return this.area; }
 
@@ -47,6 +39,7 @@ class Bird extends Animal {
 
     @Override
     public void display() {
+        System.out.printf("I am a %s\n", type);
         super.display();
         System.out.printf("Area: %s\nIs WinterFly: %b", area, winterFly);
     }

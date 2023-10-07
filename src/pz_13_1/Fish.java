@@ -21,17 +21,9 @@ class Fish extends Animal {
         setUpStreamSwim(upStreamSwim);
     }
 
-    public void setSwim(boolean isSwim) {
-        this.isSwim = isSwim;
-    }
-
     public void setSquama(String squama) { this.squama = squama; }
 
     public void setUpStreamSwim(boolean upStreamSwim) { this.upStreamSwim = upStreamSwim; }
-
-    public boolean isSwim() {
-        return this.isSwim;
-    }
 
     public String getSquama() { return this.squama; }
 
@@ -45,6 +37,7 @@ class Fish extends Animal {
 
     @Override
     public void display() {
+        System.out.printf("I am a %s\n", type);
         super.display();
         System.out.printf("Squama: %s\nIs UpStreamSwim: %b", squama, upStreamSwim);
     }
