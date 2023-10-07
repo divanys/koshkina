@@ -1,0 +1,163 @@
+Письменные принадлежности.
+
+Опишите класс WritingMaterials.
+
+У класса WritingMaterials должны быть поля:
+
+    name - название предмета (String);
+    color - цвет, которым он пишет (String);
+    price - его цена (int);
+    length - его длина (double);
+    canDraw - ответ на вопрос, умеет ли эта письменная принадлежность писать? (boolean);
+
+У класса WritingMaterials должны быть методы:
+
+    display() - выводит информацию о предмете в формате: "Название: <его название>, Цвет: <цвет>, Длина: <его длина>, Цена: <его цена>, Умеет рисовать: <Да/Нет>";
+    replaceRod(String newColor) - принимает новый цвет стержня и изменяет цвет письменной принадлежности;
+    increasePrice(int amount) - принимает на вход изменение цены и увеличивает цену на это число;
+    decreasePrice(int amount) - принимает на вход изменение цены и уменьшает цену на это число;
+    draw() - Если предмет умеет рисовать, то выводит на экран фразу типа: "<Название> провёл линию. Её цвет - <цвет>.", в противном случае выводит на экран фразу " <Название> не может ничего нарисовать."
+
+У класса WritingMaterials должны быть следующие конструкторы:
+
+    WritingMaterials(String name, String color) - позволяет создать предмет с его названием и цветом;
+    WritingMaterials(String name, int price) - позволяет создать предмет с его названием и ценой. При этом в цвете окажется значение "No Color";
+    WritingMaterials(int price, double length, boolean canDraw) - позволяет создать предмет с его ценой, длиной и способностью рисовать. При этом в названии окажется значение "No Name";
+    WritingMaterials(String name, String color, int price, double length, boolean canDraw) - позволяет создать предмет со всеми его свойствами в том же порядке, который указан на предыдущем слайде.
+
+Добавьте инкапсуляцию в класс WritingMaterials. Для каждого свойства в классе WritingMaterials должны быть свои методы get/set (для булевых значений не get, а is).
+
+Перегрузите метод draw() в классе WritingMaterials таким образом:
+
+    draw() - Если предмет умеет рисовать, то выводит на экран фразу типа: "<Название> провёл линию. Её цвет - <цвет>."
+    draw(String message) - Если предмет умеет рисовать, то выводит на экран фразу типа: "<Название> провёл линию. Её цвет - <цвет>. Сообщение: <message>."
+    draw(String message, String color) - Если предмет умеет рисовать, то выводит на экран фразу типа: "<Название> провёл линию. Её цвет - <цвет>. Сообщение: <message>."
+
+Создать три класса-наследника от класса WritingMaterials: Pen, Pencil и Marker.
+
+Класс Pen:
+У всех ручек цвет стержня по умолчанию - "Blue".
+У ручек должен быть новый метод:
+
+    click() - выводит на экран фразу "Клик-клик" и изменяет состояние ручки, которое можно представить булевым полем
+     "clicked" (если ручка была выдвинута, то после вызова метода она считается вдвинутой, и наоборот).
+
+Класс Pencil:
+У всех карандашей цвет стержня по умолчанию - "Gray".
+У карандашей должен быть новый метод:
+
+    sharpen() - выводит на экран фразу "Строгание карандаша" и изменяет длину карандаша, уменьшая её на 0.5 (предполагая, что карандаш затачивается и теряет длину при каждом заточении).
+
+Класс Marker:
+
+У всех маркеров цвет стержня по умолчанию - "Black".
+У маркеров должен быть новый метод:
+
+    drawPattern(String pattern) - принимает на вход строку "pattern" и выводит на экран фразу "Рисуем узор: <pattern>". Этот метод также должен проверить, если маркер не закрыт (capped), то выдать предупреждение "Маркер не закрыт, рисование невозможно!" и не выполнять рисование.
+
+Переопределите у созданных вами классов-наследников (Pen, Pencil и Marker) метод display().
+Перед выводом стандартной информации добавьте в начало вывода фразу "I am a <название класса>".
+
+Переопределите у созданных вами классов-наследников (Pen, Pencil и Marker) метод draw().
+Для каждого класса метод должен возвращать разные фразы, соответствующие тому, что данный инструмент делает
+Можете проверить свои классы, запустив их с этим кодом:
+
+
+
+public class program {
+    public static void main(String[] args) {
+        // тестируем перегрузку метода draw()
+
+        WritingMaterials pen = new WritingMaterials("Pen", "Blue", 10, 15.5, true);
+
+        System.out.println("=====================PEN========================");
+
+        pen.display();
+        pen.draw("Hello, World!");
+        System.out.println();
+
+        System.out.println("====================PENCIL======================");
+
+        WritingMaterials pencil = new WritingMaterials("Pencil", 5);
+        pencil.display();
+        pencil.draw("This is a pencil.");
+        System.out.println();
+
+        pencil.setColor("Black");
+        pencil.setDraw(true);
+        pencil.display();
+        pencil.draw("This is a pencil.", 17);
+        System.out.println();
+
+        System.out.println("====================MARKER======================");
+
+        WritingMaterials marker = new WritingMaterials("Marker", "Red");
+
+        marker.display();
+        marker.priceUp(2);
+        marker.draw();
+        System.out.println();
+
+        marker.setColor("Green");
+        marker.setDraw(true);
+        marker.display();
+        marker.draw();
+        System.out.println("==========================================");
+        System.out.println("==========================================");
+
+
+
+        // тестируем Pen
+        System.out.println("\n=================PEN1=====================");
+        Pen pen1 = new Pen();
+        pen1.display();
+
+        pen1.click();
+        System.out.println("\n=К=Л=И=К=Н=У=Л=И=\n");
+        pen1.display();
+
+        pen1.click();
+        System.out.println("\n=К=Л=И=К=Н=У=Л=И=\n");
+        pen1.display();
+        pen1.draw();
+
+
+        // тестируем Pencil
+        System.out.println("\n============PENCIL1====================");
+        Pensil pencil1 = new Pensil();
+        pencil1.setLength(16.5);
+        pencil1.setDraw(true);
+        pencil1.setPrice(500);
+        pencil1.display();
+
+        pencil1.sharpen();
+        System.out.println("\n=П=О=Д=Т=О=Ч=И=Л=И=\n");
+        pencil1.display();
+
+        pencil1.sharpen();
+        System.out.println("\n=П=О=Д=Т=О=Ч=И=Л=И=\n");
+        pencil1.display();
+        pencil1.draw();
+        System.out.println("==========================================");
+        System.out.println("==========================================");
+
+
+
+        // тестируем Marker
+        System.out.println("\n==============MARKER1====================");
+        Marker marker1 = new Marker();
+        marker1.setDraw(true);
+        marker1.setPrice(40);
+        marker1.display();
+
+        marker1.drawPattern("Stars");
+
+        marker1.setCapped(false); // Открываем маркер
+        System.out.println("\n=О=Т=К=Р=Ы=Л=И=\n");
+        marker1.display();
+        marker1.drawPattern("Squares");
+
+        marker1.draw();
+    }
+}
+
