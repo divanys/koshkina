@@ -96,7 +96,7 @@ public class Animal {
 
     // методы
     public void display() {
-        System.out.printf("Type: %s \nName: %s \nAge: %d \nWeight: %f \nIs Fly?: %b \nIs Walk?: %b \nIs Swim?: %b\n", type, name, age, weight, isFly, isWalk, isSwim);
+        System.out.printf("Type: %s \nName: %s \nAge: %d \nWeight: %.2f \nIs Fly?: %b \nIs Walk?: %b \nIs Swim?: %b\n", type, name, age, weight, isFly, isWalk, isSwim);
     }
 
     public void rename(String name, String newName) {

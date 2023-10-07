@@ -32,8 +32,7 @@ public class program {
 
         b.setArea("На югах");
         b.setWinterFly(false);
-        System.out.println(b.getArea());
-        System.out.println(b.isWinterFly());
+        System.out.printf("Area now: %s\nIs WinterFly now: %b\nVOICE ", b.getArea(), b.isWinterFly());
         b.chiriсk_chiriсk();
 
         System.out.println("\n=================РЫБКИИИИИ=======================");
@@ -44,8 +43,7 @@ public class program {
 
         f.setSquama("Крупная");
         f.setUpStreamSwim(true);
-        System.out.println(f.getSquama());
-        System.out.println(f.isUpStreamSwim());
+        System.out.printf("Squama now: %s\nIs UpStreamSwim now: %b\nVOICE ", f.getSquama(), f.isUpStreamSwim());
         f.bul_bul();
 
         System.out.println("\n=================НАСЕКОМЫЕ=========================");
@@ -56,8 +54,9 @@ public class program {
 
         i.setWingCount(4);
         i.setLikeJesus(true);
-        System.out.println(i.getWingCount());
-        System.out.println(i.isLikeJesus());
+        System.out.printf("WingCount now: %d\nIs LikeJesus now: %b\nVOICE ", i.getWingCount(), i.isLikeJesus());
         i.ggggg();
+
+        System.out.println("YOU WERE AS BEAUTIFUL AS JESUS");
     }
 }

@@ -1,10 +1,13 @@
 package pz_13_1;
+
 // Класс Insect:
 // Все насекомые должны уметь ходить по умолчанию.
 // У насекомых должны быть новые свойства:
 // - wingCount - количество крыльев
 // - likeJesus - умеет ли ходить по воде
 // Добавьте насекомым метод ggggg, который выводит на экран строку "Ggggg".
+
+
 class Insect extends Animal {
     private boolean isWalk = true;
     private int wingCount;
@@ -18,11 +21,17 @@ class Insect extends Animal {
         setLikeJesus(likeJesus);
     }
 
-    public void setWingCount(int wingCount) { this.wingCount = wingCount; }
+    public void setWingCount(int wingCount) {
+        this.wingCount = wingCount;
+    }
 
-    public void setLikeJesus(boolean likeJesus) { this.likeJesus = likeJesus; }
+    public void setLikeJesus(boolean likeJesus) {
+        this.likeJesus = likeJesus;
+    }
 
-    public int getWingCount() { return this.wingCount; }
+    public int getWingCount() {
+        return this.wingCount;
+    }
 
     public boolean isLikeJesus() {
         return this.likeJesus;

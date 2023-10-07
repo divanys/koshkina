@@ -25,9 +25,13 @@ class Bird extends Animal {
         this.area = area;
     }
 
-    public void setWinterFly(boolean winterFly) { this.winterFly = winterFly; }
+    public void setWinterFly(boolean winterFly) {
+        this.winterFly = winterFly;
+    }
 
-    public String getArea() { return this.area; }
+    public String getArea() {
+        return this.area;
+    }
 
     public boolean isWinterFly() {
         return this.winterFly;

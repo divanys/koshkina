@@ -21,11 +21,17 @@ class Fish extends Animal {
         setUpStreamSwim(upStreamSwim);
     }
 
-    public void setSquama(String squama) { this.squama = squama; }
+    public void setSquama(String squama) {
+        this.squama = squama;
+    }
 
-    public void setUpStreamSwim(boolean upStreamSwim) { this.upStreamSwim = upStreamSwim; }
+    public void setUpStreamSwim(boolean upStreamSwim) {
+        this.upStreamSwim = upStreamSwim;
+    }
 
-    public String getSquama() { return this.squama; }
+    public String getSquama() {
+        return this.squama;
+    }
 
     public boolean isUpStreamSwim() {
         return this.upStreamSwim;
