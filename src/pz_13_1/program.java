@@ -60,3 +60,5 @@ public class program {
         System.out.println("YOU WERE AS BEAUTIFUL AS JESUS");
     }
 }
+
+// сделать 14 пз (то же самое)

@@ -1,4 +1,4 @@
-package pz_14_1;
+package pz_13_2;
 
 
 public class program {
@@ -95,5 +95,14 @@ public class program {
         marker1.drawPattern("Squares");
 
         marker1.draw();
+        System.out.println();
+        Marker marker2 = new Marker();
+        marker2.setColor("Black");
+        marker2.display();
+
+        System.out.println("\n==============RULER====================");
+        Ruler ruler1 = new Ruler("Розовая", "Розовая", 300, 26.0, true, 25, true);
+        ruler1.display();
+
     }
 }

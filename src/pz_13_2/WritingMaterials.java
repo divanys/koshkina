@@ -1,4 +1,4 @@
-package pz_14_1;
+package pz_13_2;
 // поля
 // name - название предмета (String);
 // color - цвет, которым он пишет (String);
