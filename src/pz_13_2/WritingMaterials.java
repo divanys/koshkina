@@ -110,16 +110,20 @@ public class WritingMaterials {
         else System.out.printf("%s не может ничего нарисовать.\n", name);
     }
 
+    public void draw(int n) {
+        if (this.draw) System.out.printf("%s провёл %d линий. Их цвет - %s.\n", name, n, color);
+        else System.out.printf("%s не может ничего нарисовать.\n", name);
+    }
+
+    public void draw(String color, int n) {
+        if (this.draw) System.out.printf("%s провёл %d линий. Их цвет - %s.\n", name, n, color);
+        else System.out.printf("%s не может ничего нарисовать.\n", name);
+    }
     public void draw(String message) {
         if (this.draw) System.out.printf("%s написал текст. Его цвет - %s.\nСообщение: %s\n", name, color, message);
         else System.out.printf("%s не может ничего написать.\n", name);
     }
 
-    public void draw(String message, int count) {
-        if (this.draw)
-            System.out.printf("%s написал текст. Его цвет - %s.\nСообщение: %s\nКоличество символов равно: %d\n", name, color, message, count);
-        else System.out.printf("%s не может ничего написать.\n", name);
-    }
 
     // инкапсуляция
     public String getName() {

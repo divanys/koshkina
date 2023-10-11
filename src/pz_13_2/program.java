@@ -104,5 +104,12 @@ public class program {
         Ruler ruler1 = new Ruler("Розовая", "Розовая", 300, 26.0, true, 25, true);
         ruler1.display();
 
+        System.out.println("\n==============Divider====================");
+        Divider divider1 = new Divider();
+        divider1.setDividerType("big");
+        divider1.setPrice(89);
+        divider1.setColor("Green");
+        divider1.display();
+
     }
 }
