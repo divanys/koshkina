@@ -19,11 +19,11 @@ abstract class Building {
     private boolean isCulturalMonument;
 
     public Building(String name, String address, int yearBuilt, String architectName, boolean isCulturalMonument) {
-        this.name = name;
-        this.address = address;
-        this.yearBuilt = yearBuilt;
-        this.architectName = architectName;
-        this.isCulturalMonument = isCulturalMonument;
+       setName(name);
+       setAddress(address);
+        setYearBuilt(yearBuilt);
+        setArchitectName(architectName);
+        setCulturalMonument(isCulturalMonument);
     }
 
     // Геттеры
