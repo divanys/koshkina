@@ -15,7 +15,7 @@ class Library extends Building implements SocialHouse {
     private boolean hasCafeteria;
 
     public Library(String name, String address, int yearBuilt, String architectName, boolean isCulturalMonument,
-                   int numberOfBooks, boolean isOpenOnSundays, String librarianName) {
+                   int numberOfBooks, boolean isOpenOnSundays, String librarianName, int capacity, boolean hasParking, boolean hasCafeteria) {
         super(name, address, yearBuilt, architectName, isCulturalMonument);
         setNumberOfBooks(numberOfBooks);
         setOpenOnSundays(isOpenOnSundays);
