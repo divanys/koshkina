@@ -197,19 +197,13 @@ class Client extends Person implements Card, Printable {
 
     @Override
     public void decreaseCount() {
-
     }
 
     @Override
     public void increaseCount() {
-
     }
 
     public Library getLibrary() {
         return library;
     }
-
-    // methods
-//    public
 }
-

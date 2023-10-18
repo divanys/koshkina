@@ -81,7 +81,23 @@ public class Main {
         client2.displayBorrowedPrintEditionsFromUser();
         employee.viewAllPrintEditions(library);
 
+        System.out.println("\n=============удаляем ПИ из библиотеки=================");
+        library.removeBook(book1, 1);
+        library.removeMagazine(magazine1, 2);
+        library.removeNewspaper(newspaper1, 6);
+        library.removeNewspaper(newspaper1, 1);
 
+        System.out.println("\n=============ищем ПИ в библиотеке по разным данным=================");
+        List<Printable> booksByAuthor = library.searchBooksByAuthor("Автор 1");
+        List<Printable> magazinesByTitle = library.searchMagazinesByTitle("Журнал 2");
+        List<Printable> printEditionsByTitleAndAuthor = library.searchPrintEditionsByTitleAndAuthor("Книга 3", "Автор 6");
+
+        // очищаем, вдруг нужно будет ещё искать что-то
+        booksByAuthor.clear();
+        magazinesByTitle.clear();
+        printEditionsByTitleAndAuthor.clear();
+
+        employee.viewAllPrintEditions(library);
 
 
     }
