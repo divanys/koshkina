@@ -58,4 +58,16 @@ public class Library {
     public void returnNewspaper(Printable newspaper) {
         newspapers.add(newspaper);
     }
+
+    public List<Printable> getBooks() {
+        return books;
+    }
+
+    public List<Printable> getMagazines() {
+        return magazines;
+    }
+
+    public List<Printable> getNewspapers() {
+        return newspapers;
+    }
 }

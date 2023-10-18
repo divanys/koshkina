@@ -61,6 +61,14 @@ class Client extends Person implements Card, Printable {
         return cardNumber;
     }
 
+    public boolean isCardRegistered() {
+        return isCardRegistered;
+    }
+
+    public List<Printable> getBorrowedPrintEditions() {
+        return borrowedPrintEditions;
+    }
+
     // interface card
     @Override
     public void registerCard() {
@@ -129,6 +137,7 @@ class Client extends Person implements Card, Printable {
                     } else {
                         System.out.println("Книга " + printEdition.getTitle() + " успешно и вовремя возвращена.");
                     }
+                    library.returnBook(printEdition);
                 } else if (printEdition instanceof Magazine) {
                     if (dataTo != null && LocalDate.now().isAfter(LocalDate.parse(dataTo))) {
                         long daysLate = ChronoUnit.DAYS.between(LocalDate.parse(dataTo), LocalDate.now());
@@ -137,6 +146,7 @@ class Client extends Person implements Card, Printable {
                     } else {
                         System.out.println("Журнал " + printEdition.getTitle() + " успешно и вовремя возвращён.");
                     }
+                    library.returnMagazine(printEdition);
                 } else if (printEdition instanceof Newspaper) {
                     if (dataTo != null && LocalDate.now().isAfter(LocalDate.parse(dataTo))) {
                         long daysLate = ChronoUnit.DAYS.between(LocalDate.parse(dataTo), LocalDate.now());
@@ -145,6 +155,7 @@ class Client extends Person implements Card, Printable {
                     } else {
                         System.out.println("Газета " + printEdition.getTitle() + " успешно и вовремя возвращена.");
                     }
+                    library.returnNewspaper(printEdition);
                 }
                 borrowedPrintEditions.remove(printEdition);
             } else {
@@ -175,6 +186,11 @@ class Client extends Person implements Card, Printable {
     @Override
     public String getAuthor() {
         return null;
+    }
+
+    @Override
+    public int getCount() {
+        return 0;
     }
 
     // methods

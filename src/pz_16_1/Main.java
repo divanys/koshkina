@@ -1,14 +1,17 @@
 package pz_16_1;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         Library library = new Library();
-        Book book1 = new Book("Книга 1", "Автор 1");
-        Book book2 = new Book("Книга 2", "Автор 2");
-        Book book3 = new Book("Книга 3", "Автор 6");
-        Magazine magazine1 = new Magazine("Журнал 1", "Автор 3");
-        Newspaper newspaper1 = new Newspaper("Газета 1", "Автор 4");
-        Newspaper newspaper2 = new Newspaper("Газета 2", "Автор 5");
+        Book book1 = new Book("Книга 1", "Автор 1", 2);
+        Book book2 = new Book("Книга 2", "Автор 2", 1);
+        Book book3 = new Book("Книга 3", "Автор 6", 4);
+        Magazine magazine1 = new Magazine("Журнал 1", "Автор 3", 5);
+        Newspaper newspaper1 = new Newspaper("Газета 1", "Автор 4", 1);
+        Newspaper newspaper2 = new Newspaper("Газета 2", "Автор 5", 3);
 
         System.out.println("Регистрация печатных изданий:");
         library.addBook(book1);
@@ -24,6 +27,20 @@ public class Main {
         client1.registerCard();
         client2.registerCard();
 
+        System.out.println("\n\nСмотрим карточки, регистрируем библиотекаря и чекаем все ПИ:");
+        Employee employee = new Employee("Сидоров", "Сидор", "Сидорович", 35, library);
+
+        List<Client> clients = Arrays.asList(client1, client2);
+        employee.viewAllClients(clients);
+        System.out.println();
+
+        employee.viewClientCardsAndBorrowedEditions(clients);
+        System.out.println();
+
+        employee.viewAllPrintEditions(library);
+        System.out.println("\n\n");
+
+
         System.out.println("Выдача печатных изданий:");
         client1.issuePrintEdition(book1);
         client1.issuePrintEdition(book2);
@@ -33,6 +50,14 @@ public class Main {
         client2.issuePrintEdition(book3);
         client2.issuePrintEdition(newspaper2);
 
+        System.out.println("\n\nОпять смотрим карточки и чекаем все ПИ:");
+
+        employee.viewAllClients(clients);
+
+        employee.viewClientCardsAndBorrowedEditions(clients);
+
+        employee.viewAllPrintEditions(library);
+        System.out.println("\n\n");
         client1.displayBorrowedPrintEditionsFromUser();
         System.out.println("==============================");
         client2.displayBorrowedPrintEditionsFromUser();
@@ -52,6 +77,9 @@ public class Main {
         client1.displayBorrowedPrintEditionsFromUser();
         System.out.println("==============================");
         client2.displayBorrowedPrintEditionsFromUser();
+        employee.viewAllPrintEditions(library);
+
+
 
 
     }
