@@ -12,7 +12,6 @@ class Client extends Person implements Card, Printable {
     private int cardNumber;
     private boolean isCardRegistered = false;
     private final List<Printable> borrowedPrintEditions = new ArrayList<>();
-    private String dataFrom;
     private String dataTo;
     private final Library library;
 
@@ -88,7 +87,6 @@ class Client extends Person implements Card, Printable {
                     book.decreaseCount();
                     System.out.println("Сегодняшняя дата: " + LocalDate.now() + "\n" +
                             book.getTitle() + " автора " + book.getAuthor() + " выдана клиенту.");
-                    dataFrom = LocalDate.now().toString();
                     dataTo = LocalDate.now().plusWeeks(2).toString();
                     System.out.println("Клиент должен вернуть книгу до " + dataTo);
                     borrowedPrintEditions.add(book);
@@ -101,7 +99,6 @@ class Client extends Person implements Card, Printable {
                     magazine.decreaseCount();
                     System.out.println("Сегодняшняя дата: " + LocalDate.now() + "\n" +
                             magazine.getTitle() + " автора " + magazine.getAuthor() + " выдан журнал клиенту.");
-                    dataFrom = LocalDate.now().toString();
                     dataTo = LocalDate.now().plusWeeks(2).toString();
                     System.out.println("Клиент должен вернуть журнал до " + dataTo);
                     borrowedPrintEditions.add(magazine);
@@ -114,7 +111,6 @@ class Client extends Person implements Card, Printable {
                     newspaper.decreaseCount();
                     System.out.println("Сегодняшняя дата: " + LocalDate.now() + "\n" +
                             newspaper.getTitle() + " автора " + newspaper.getAuthor() + " выдана газета клиенту.");
-                    dataFrom = LocalDate.now().toString();
                     dataTo = LocalDate.now().plusWeeks(2).toString();
                     System.out.println("Клиент должен вернуть газету до " + dataTo);
                     borrowedPrintEditions.add(newspaper);
@@ -207,6 +203,10 @@ class Client extends Person implements Card, Printable {
     @Override
     public void increaseCount() {
 
+    }
+
+    public Library getLibrary() {
+        return library;
     }
 
     // methods

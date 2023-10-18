@@ -1,8 +1,8 @@
 package pz_16_1;
 
 class Magazine implements Printable {
-    private String title;
-    private String author;
+    private final String title;
+    private final String author;
     private int count;
 
     public Magazine(String title, String author, int count) {

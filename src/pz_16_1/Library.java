@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
-    private List<Printable> books = new ArrayList<>();
-    private List<Printable> magazines = new ArrayList<>();
-    private List<Printable> newspapers = new ArrayList<>();
+    private final List<Printable> books = new ArrayList<>();
+    private final List<Printable> magazines = new ArrayList<>();
+    private final List<Printable> newspapers = new ArrayList<>();
 
     // Добавляем книги/журналы/газеты в нашу библиотеку
     public void addBook(Book book) {
