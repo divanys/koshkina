@@ -25,4 +25,16 @@ class Magazine implements Printable {
     public int getCount() {
         return count;
     }
+
+    @Override
+    public void decreaseCount() {
+        if (count > 0) {
+            count--;
+        }
+    }
+
+    @Override
+    public void increaseCount() {
+        count++;
+    }
 }

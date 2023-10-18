@@ -8,17 +8,17 @@ public class Library {
     private List<Printable> magazines = new ArrayList<>();
     private List<Printable> newspapers = new ArrayList<>();
 
-    public void addBook(Printable book) {
+    public void addBook(Book book) {
         books.add(book);
         System.out.println("Книга успешно добавлена!");
     }
 
-    public void addMagazine(Printable magazine) {
+    public void addMagazine(Magazine magazine) {
         magazines.add(magazine);
         System.out.println("Журнал успешно добавлен!");
     }
 
-    public void addNewspaper(Printable newspaper) {
+    public void addNewspaper(Newspaper newspaper) {
         newspapers.add(newspaper);
         System.out.println("Газета успешно добавлена!");
     }
@@ -35,28 +35,88 @@ public class Library {
         return newspapers.contains(newspaper);
     }
 
-    public void borrowBook(Printable book) {
-        books.remove(book);
+    public int getBookCount(String title, String author) {
+        int count = 0;
+        for (Printable book : books) {
+            if (book.getTitle().equals(title) && book.getAuthor().equals(author)) {
+                count += book.getCount();
+            }
+        }
+        return count;
     }
 
-    public void returnBook(Printable book) {
-        books.add(book);
+    public int getMagazineCount(String title, String author) {
+        int count = 0;
+        for (Printable magazine : magazines) {
+            if (magazine.getTitle().equals(title) && magazine.getAuthor().equals(author)) {
+                count += magazine.getCount();
+            }
+        }
+        return count;
     }
 
-    public void borrowMagazine(Printable magazine) {
-        magazines.remove(magazine);
+    public int getNewspaperCount(String title, String author) {
+        int count = 0;
+        for (Printable newspaper : newspapers) {
+            if (newspaper.getTitle().equals(title) && newspaper.getAuthor().equals(author)) {
+                count += newspaper.getCount();
+            }
+        }
+        return count;
     }
 
-    public void returnMagazine(Printable magazine) {
-        magazines.add(magazine);
+    public void borrowBook(String title, String author) {
+        for (Printable book : books) {
+            if (book.getTitle().equals(title) && book.getAuthor().equals(author)) {
+                book.decreaseCount();
+                break;
+            }
+        }
     }
 
-    public void borrowNewspaper(Printable newspaper) {
-        newspapers.remove(newspaper);
+    public void returnBook(String title, String author) {
+        for (Printable book : books) {
+            if (book.getTitle().equals(title) && book.getAuthor().equals(author)) {
+                book.increaseCount();
+                break;
+            }
+        }
     }
 
-    public void returnNewspaper(Printable newspaper) {
-        newspapers.add(newspaper);
+    public void borrowMagazine(String title, String author) {
+        for (Printable magazine : magazines) {
+            if (magazine.getTitle().equals(title) && magazine.getAuthor().equals(author)) {
+                magazine.decreaseCount();
+                break;
+            }
+        }
+    }
+
+    public void returnMagazine(String title, String author) {
+        for (Printable magazine : magazines) {
+            if (magazine.getTitle().equals(title) && magazine.getAuthor().equals(author)) {
+                magazine.increaseCount();
+                break;
+            }
+        }
+    }
+
+    public void borrowNewspaper(String title, String author) {
+        for (Printable newspaper : newspapers) {
+            if (newspaper.getTitle().equals(title) && newspaper.getAuthor().equals(author)) {
+                newspaper.decreaseCount();
+                break;
+            }
+        }
+    }
+
+    public void returnNewspaper(String title, String author) {
+        for (Printable newspaper : newspapers) {
+            if (newspaper.getTitle().equals(title) && newspaper.getAuthor().equals(author)) {
+                newspaper.increaseCount();
+                break;
+            }
+        }
     }
 
     public List<Printable> getBooks() {

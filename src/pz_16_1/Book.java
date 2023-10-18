@@ -4,6 +4,7 @@ class Book implements Printable {
     private String title;
     private String author;
     private int count;
+
     public Book(String title, String author, int count) {
         this.title = title;
         this.author = author;
@@ -19,9 +20,22 @@ class Book implements Printable {
     public String getAuthor() {
         return author;
     }
+
     @Override
     public int getCount() {
         return count;
+    }
+
+    @Override
+    public void decreaseCount() {
+        if (count > 0) {
+            count--;
+        }
+    }
+
+    @Override
+    public void increaseCount() {
+        count++;
     }
 
 

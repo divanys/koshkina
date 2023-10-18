@@ -80,89 +80,95 @@ class Client extends Person implements Card, Printable {
         }
     }
 
-    @Override
     public void issuePrintEdition(Printable printEdition) {
         if (isCardRegistered) {
             if (printEdition instanceof Book) {
                 Book book = (Book) printEdition;
-                if (library.containsBook(book)) {
-                    System.out.println("Сегодняшняя дата: " + LocalDate.now() + "\nКнига " + book.getTitle() + " автора " + book.getAuthor() + " выдана клиенту.");
+                if (book.getCount() > 0) {
+                    book.decreaseCount();
+                    System.out.println("Сегодняшняя дата: " + LocalDate.now() + "\n" +
+                            book.getTitle() + " автора " + book.getAuthor() + " выдана клиенту.");
                     dataFrom = LocalDate.now().toString();
                     dataTo = LocalDate.now().plusWeeks(2).toString();
                     System.out.println("Клиент должен вернуть книгу до " + dataTo);
                     borrowedPrintEditions.add(book);
-                    library.borrowBook(book);
                 } else {
-                    System.out.println("Эта книга не зарегистрирована в нашей библиотеке.");
+                    System.out.println("Извините, данная книга временно недоступна.");
                 }
             } else if (printEdition instanceof Magazine) {
                 Magazine magazine = (Magazine) printEdition;
-                if (library.containsMagazine(magazine)) {
-                    System.out.println("Сегодняшняя дата: " + LocalDate.now() + "\nЖурнал " + magazine.getTitle() + " автора " + magazine.getAuthor() + " выдана клиенту.");
+                if (magazine.getCount() > 0) {
+                    magazine.decreaseCount();
+                    System.out.println("Сегодняшняя дата: " + LocalDate.now() + "\n" +
+                            magazine.getTitle() + " автора " + magazine.getAuthor() + " выдан журнал клиенту.");
                     dataFrom = LocalDate.now().toString();
                     dataTo = LocalDate.now().plusWeeks(2).toString();
                     System.out.println("Клиент должен вернуть журнал до " + dataTo);
                     borrowedPrintEditions.add(magazine);
-                    library.borrowMagazine(magazine);
                 } else {
-                    System.out.println("Этот журнал не зарегистрирован в нашей библиотеке.");
+                    System.out.println("Извините, этот журнал временно недоступен.");
                 }
             } else if (printEdition instanceof Newspaper) {
                 Newspaper newspaper = (Newspaper) printEdition;
-                if (library.containsNewspaper(newspaper)) {
-                    System.out.println("Сегодняшняя дата: " + LocalDate.now() + "\nГазета " + newspaper.getTitle() + " автора " + newspaper.getAuthor() + " выдана клиенту.");
+                if (newspaper.getCount() > 0) {
+                    newspaper.decreaseCount();
+                    System.out.println("Сегодняшняя дата: " + LocalDate.now() + "\n" +
+                            newspaper.getTitle() + " автора " + newspaper.getAuthor() + " выдана газета клиенту.");
                     dataFrom = LocalDate.now().toString();
                     dataTo = LocalDate.now().plusWeeks(2).toString();
                     System.out.println("Клиент должен вернуть газету до " + dataTo);
                     borrowedPrintEditions.add(newspaper);
-                    library.borrowNewspaper(newspaper);
                 } else {
-                    System.out.println("Эта газета не зарегистрирована в нашей библиотеке.");
+                    System.out.println("Извините, эта газета временно недоступна.");
                 }
+            } else {
+                System.out.println("Неизвестный тип печатного издания.");
             }
         } else {
-            System.out.println("У клиента не зарегистрирована карточка. Невозможно выдать книгу.");
+            System.out.println("У клиента не зарегистрирована карточка. Невозможно выдать издание.");
         }
     }
 
-    @Override
     public void returnPrintEdition(Printable printEdition) {
         if (isCardRegistered) {
             if (borrowedPrintEditions.contains(printEdition)) {
                 if (printEdition instanceof Book) {
+                    Book book = (Book) printEdition;
+                    book.increaseCount();
                     if (dataTo != null && LocalDate.now().isAfter(LocalDate.parse(dataTo))) {
                         long daysLate = ChronoUnit.DAYS.between(LocalDate.parse(dataTo), LocalDate.now());
-                        System.out.println("Книга " + printEdition.getTitle() + " автора " + printEdition.getAuthor()
+                        System.out.println(book.getTitle() + " автора " + book.getAuthor()
                                 + " возвращена с опозданием на " + daysLate + " дней.");
                     } else {
-                        System.out.println("Книга " + printEdition.getTitle() + " успешно и вовремя возвращена.");
+                        System.out.println(book.getTitle() + " успешно и вовремя возвращена.");
                     }
-                    library.returnBook(printEdition);
                 } else if (printEdition instanceof Magazine) {
+                    Magazine magazine = (Magazine) printEdition;
+                    magazine.increaseCount();
                     if (dataTo != null && LocalDate.now().isAfter(LocalDate.parse(dataTo))) {
                         long daysLate = ChronoUnit.DAYS.between(LocalDate.parse(dataTo), LocalDate.now());
-                        System.out.println("Журнал " + printEdition.getTitle() + " автора " + printEdition.getAuthor()
+                        System.out.println(magazine.getTitle() + " автора " + magazine.getAuthor()
                                 + " возвращён с опозданием на " + daysLate + " дней.");
                     } else {
-                        System.out.println("Журнал " + printEdition.getTitle() + " успешно и вовремя возвращён.");
+                        System.out.println(magazine.getTitle() + " успешно и вовремя возвращён.");
                     }
-                    library.returnMagazine(printEdition);
                 } else if (printEdition instanceof Newspaper) {
+                    Newspaper newspaper = (Newspaper) printEdition;
+                    newspaper.increaseCount();
                     if (dataTo != null && LocalDate.now().isAfter(LocalDate.parse(dataTo))) {
                         long daysLate = ChronoUnit.DAYS.between(LocalDate.parse(dataTo), LocalDate.now());
-                        System.out.println("Газета " + printEdition.getTitle() + " автора " + printEdition.getAuthor()
+                        System.out.println(newspaper.getTitle() + " автора " + newspaper.getAuthor()
                                 + " возвращена с опозданием на " + daysLate + " дней.");
                     } else {
-                        System.out.println("Газета " + printEdition.getTitle() + " успешно и вовремя возвращена.");
+                        System.out.println(newspaper.getTitle() + " успешно и вовремя возвращена.");
                     }
-                    library.returnNewspaper(printEdition);
                 }
                 borrowedPrintEditions.remove(printEdition);
             } else {
-                System.out.println("У клиента нет печатного издания с таким названием и автором. Невозможно принять.");
+                System.out.println("У клиента нет такого издания. Невозможно принять.");
             }
         } else {
-            System.out.println("Клиенту не выдана карточка. Невозможно принять печатное издание.");
+            System.out.println("Клиенту не выдана карточка. Невозможно принять издание.");
         }
     }
 
@@ -191,6 +197,16 @@ class Client extends Person implements Card, Printable {
     @Override
     public int getCount() {
         return 0;
+    }
+
+    @Override
+    public void decreaseCount() {
+
+    }
+
+    @Override
+    public void increaseCount() {
+
     }
 
     // methods

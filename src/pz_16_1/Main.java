@@ -48,6 +48,7 @@ public class Main {
         client1.issuePrintEdition(newspaper1);
 
         client2.issuePrintEdition(book3);
+        client2.issuePrintEdition(magazine1);
         client2.issuePrintEdition(newspaper2);
 
         System.out.println("\n\nОпять смотрим карточки и чекаем все ПИ:");
