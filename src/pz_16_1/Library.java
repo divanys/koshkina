@@ -227,6 +227,4 @@ public class Library {
 
         return result;
     }
-
-    // совет от
 }
