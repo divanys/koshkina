@@ -98,7 +98,13 @@ public class Main {
         printEditionsByTitleAndAuthor.clear();
 
         employee.viewAllPrintEditions(library);
+        System.out.println("\n=============допустим клиент попросил совета=================");
+        employee.suggestRandomPrintEdition(library);
 
+        Administrator admin = new Administrator("Иванов", "Александр", "Сергеевич", 35);
 
+        System.out.println("\n=============админ лох=================");
+        String message = "сам лох";
+        admin.informVisitors(message);
     }
 }
