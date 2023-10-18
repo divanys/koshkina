@@ -4,6 +4,5 @@ public interface Card {
     void registerCard();
     void issuePrintEdition(Printable printEdition);
     void returnPrintEdition(Printable printEdition);
-    void displayBorrowedPrintEditions();
-
+    void displayBorrowedPrintEditionsFromUser();
 }

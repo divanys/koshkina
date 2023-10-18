@@ -156,7 +156,7 @@ class Client extends Person implements Card, Printable {
     }
 
     @Override
-    public void displayBorrowedPrintEditions() {
+    public void displayBorrowedPrintEditionsFromUser() {
         if (borrowedPrintEditions.isEmpty()) {
             System.out.println("У клиента нет выданных печатных изданий.");
         } else {

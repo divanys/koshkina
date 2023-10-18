@@ -24,15 +24,7 @@ public class Library {
     }
 
     public boolean containsBook(Printable book) {
-        for (Printable printable : books) {
-            if (printable instanceof Book) {
-                if (((Book) printable).getTitle().equals(((Book) book).getTitle()) &&
-                        ((Book) printable).getAuthor().equals(((Book) book).getAuthor())) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        return books.contains(book);
     }
 
     public boolean containsMagazine(Printable magazine) {

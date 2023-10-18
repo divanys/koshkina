@@ -33,23 +33,25 @@ public class Main {
         client2.issuePrintEdition(book3);
         client2.issuePrintEdition(newspaper2);
 
-        client1.displayBorrowedPrintEditions();
+        client1.displayBorrowedPrintEditionsFromUser();
         System.out.println("==============================");
-        client2.displayBorrowedPrintEditions();
+        client2.displayBorrowedPrintEditionsFromUser();
 
         System.out.println("Остальная работа с печатными изданиями:");
         client1.returnPrintEdition(book1);
 
-        client1.displayBorrowedPrintEditions();
+        client1.displayBorrowedPrintEditionsFromUser();
 
         client1.returnPrintEdition(book1);
         client1.returnPrintEdition(newspaper1);
-        client1.displayBorrowedPrintEditions();
+        client1.displayBorrowedPrintEditionsFromUser();
+        client1.returnPrintEdition(book2);
         client1.returnPrintEdition(book2);
         client1.returnPrintEdition(magazine1);
-        client1.displayBorrowedPrintEditions();
+        client1.returnPrintEdition(magazine1);
+        client1.displayBorrowedPrintEditionsFromUser();
         System.out.println("==============================");
-        client2.displayBorrowedPrintEditions();
+        client2.displayBorrowedPrintEditionsFromUser();
 
 
     }
