@@ -25,7 +25,6 @@ public class Main {
         Client client2 = new Client("Павлова", "Валерусик", "Трампампусик", 12, "5555555555", "ул. Макушкина, 5", false, 2, library);
         System.out.println("Регистрация пользователей (карточки пользователя):");
         client1.registerCard();
-        client2.registerCard();
 
         System.out.println("\n\nСмотрим карточки, регистрируем библиотекаря и чекаем все ПИ:");
         Employee employee = new Employee("Сидоров", "Сидор", "Сидорович", 35, library);
@@ -46,7 +45,9 @@ public class Main {
         client1.issuePrintEdition(book2);
         client1.issuePrintEdition(magazine1);
         client1.issuePrintEdition(newspaper1);
+        client1.issuePrintEdition(newspaper1);
 
+        client2.issuePrintEdition(book3);
         client2.issuePrintEdition(book3);
         client2.issuePrintEdition(magazine1);
         client2.issuePrintEdition(newspaper2);

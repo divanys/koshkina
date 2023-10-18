@@ -10,16 +10,22 @@ public class Employee extends Person {
         this.library = library;
     }
 
+    // перечисляем зарегистрированных пользователей (без перечня ПИ)
     public void viewAllClients(List<Client> clients) {
         for (Client client : clients) {
-            System.out.println("Имя: " + client.getFirstName() + ", Фамилия: " + client.getLastName());
+            System.out.printf("\nФамилия: %s\nИмя: %s\nОтчество: %s\nВозраст: %d " +
+                            "\nДоступ во взрослую библиотеку: %b\nАдрес: %s\nНомер телефона: %s\nНомер карточки: %d\n",
+                    client.getFirstName(), client.getMiddleName(), client.getLastName(), client.getAge(),
+                    client.getChildOrAdult(), client.getAddress(), client.getNumberOfTelephone(), client.getCardNumber());
         }
     }
 
     public void viewClientCardsAndBorrowedEditions(List<Client> clients) {
         for (Client client : clients) {
-            System.out.println("Клиент: " + client.getFirstName() + " " + client.getLastName());
-            System.out.println("Номер карточки: " + client.getCardNumber());
+            System.out.printf("\nФамилия: %s\nИмя: %s\nОтчество: %s\nВозраст: %d " +
+                            "\nДоступ во взрослую библиотеку: %b\nАдрес: %s\nНомер телефона: %s\nНомер карточки: %d\n",
+                    client.getFirstName(), client.getMiddleName(), client.getLastName(), client.getAge(),
+                    client.getChildOrAdult(), client.getAddress(), client.getNumberOfTelephone(), client.getCardNumber());
 
             if (client.isCardRegistered()) {
                 System.out.println("Статус карточки: Зарегистрирована");
@@ -35,22 +41,24 @@ public class Employee extends Person {
     }
 
     public void viewAllPrintEditions(Library library) {
-        System.out.println("Все имеющиеся издания:");
+        System.out.println("\nВсе имеющиеся издания:\nТип \tНазвание \tАвтор \t\tКоличество");
         System.out.println("Книги:");
         for (Printable book : library.getBooks()) {
-            System.out.println(book.getTitle() + " (" + book.getAuthor() + ") - " + book.getCount());
+            System.out.println("  \t\t" + book.getTitle() + "\t\t" + book.getAuthor() + "\t\t\t" + book.getCount());
         }
 
         System.out.println("Журналы:");
         for (Printable magazine : library.getMagazines()) {
-            System.out.println(magazine.getTitle() + " (" + magazine.getAuthor() + ") - " + magazine.getCount());
+            System.out.println("  \t\t" + magazine.getTitle() + "\t" + magazine.getAuthor() + "\t\t\t" + magazine.getCount());
         }
 
         System.out.println("Газеты:");
         for (Printable newspaper : library.getNewspapers()) {
-            System.out.println(newspaper.getTitle() + " (" + newspaper.getAuthor() + ") - " + newspaper.getCount());
+            System.out.println("  \t\t" + newspaper.getTitle() + "\t" + newspaper.getAuthor() + "\t\t\t" + newspaper.getCount());
         }
     }
 
-
+    public Library getLibrary() {
+        return library;
+    }
 }

@@ -1,4 +1,6 @@
 package pz_16_1;
+// Класс является почти реальной библиотекой. Делаем различные действия (добавить книгу, убрать книгу, проверить количество)
+// Для этого используем объекты разных классов
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,117 +10,39 @@ public class Library {
     private List<Printable> magazines = new ArrayList<>();
     private List<Printable> newspapers = new ArrayList<>();
 
+    // Добавляем книги/журналы/газеты в нашу библиотеку
     public void addBook(Book book) {
         books.add(book);
-        System.out.println("Книга успешно добавлена!");
+        System.out.printf("Книга %s автора %s в количестве %d успешно добавлена в библиотеку!", book.getTitle(), book.getAuthor(), book.getCount());
     }
 
     public void addMagazine(Magazine magazine) {
         magazines.add(magazine);
-        System.out.println("Журнал успешно добавлен!");
+        System.out.printf("Журнал %s автора %s в количестве %d успешно добавлен в библиотеку!", magazine.getTitle(), magazine.getAuthor(), magazine.getCount());
     }
 
     public void addNewspaper(Newspaper newspaper) {
         newspapers.add(newspaper);
-        System.out.println("Газета успешно добавлена!");
+        System.out.printf("Газета %s автора %s в количестве %d успешно добавлена в библиотеку!", newspaper.getTitle(), newspaper.getAuthor(), newspaper.getCount());
     }
 
-    public boolean containsBook(Printable book) {
-        return books.contains(book);
+    // Удаляем книги/журналы/газеты из нашей библиотеки
+    public void removeBook(Book book) {
+        books.remove(book);
+        System.out.printf("Книга %s автора %s в количестве %d удалена из библиотеки!", book.getTitle(), book.getAuthor(), book.getCount());
     }
 
-    public boolean containsMagazine(Printable magazine) {
-        return magazines.contains(magazine);
+    public void removeMagazine(Magazine magazine) {
+        magazines.remove(magazine);
+        System.out.printf("Журнал %s автора %s в количестве %d удален из библиотеки!", magazine.getTitle(), magazine.getAuthor(), magazine.getCount());
     }
 
-    public boolean containsNewspaper(Printable newspaper) {
-        return newspapers.contains(newspaper);
+    public void removeNewspaper(Newspaper newspaper) {
+        newspapers.remove(newspaper);
+        System.out.printf("Книга %s автора %s в количестве %d удалена из библиотеки!", newspaper.getTitle(), newspaper.getAuthor(), newspaper.getCount());
     }
 
-    public int getBookCount(String title, String author) {
-        int count = 0;
-        for (Printable book : books) {
-            if (book.getTitle().equals(title) && book.getAuthor().equals(author)) {
-                count += book.getCount();
-            }
-        }
-        return count;
-    }
-
-    public int getMagazineCount(String title, String author) {
-        int count = 0;
-        for (Printable magazine : magazines) {
-            if (magazine.getTitle().equals(title) && magazine.getAuthor().equals(author)) {
-                count += magazine.getCount();
-            }
-        }
-        return count;
-    }
-
-    public int getNewspaperCount(String title, String author) {
-        int count = 0;
-        for (Printable newspaper : newspapers) {
-            if (newspaper.getTitle().equals(title) && newspaper.getAuthor().equals(author)) {
-                count += newspaper.getCount();
-            }
-        }
-        return count;
-    }
-
-    public void borrowBook(String title, String author) {
-        for (Printable book : books) {
-            if (book.getTitle().equals(title) && book.getAuthor().equals(author)) {
-                book.decreaseCount();
-                break;
-            }
-        }
-    }
-
-    public void returnBook(String title, String author) {
-        for (Printable book : books) {
-            if (book.getTitle().equals(title) && book.getAuthor().equals(author)) {
-                book.increaseCount();
-                break;
-            }
-        }
-    }
-
-    public void borrowMagazine(String title, String author) {
-        for (Printable magazine : magazines) {
-            if (magazine.getTitle().equals(title) && magazine.getAuthor().equals(author)) {
-                magazine.decreaseCount();
-                break;
-            }
-        }
-    }
-
-    public void returnMagazine(String title, String author) {
-        for (Printable magazine : magazines) {
-            if (magazine.getTitle().equals(title) && magazine.getAuthor().equals(author)) {
-                magazine.increaseCount();
-                break;
-            }
-        }
-    }
-
-    public void borrowNewspaper(String title, String author) {
-        for (Printable newspaper : newspapers) {
-            if (newspaper.getTitle().equals(title) && newspaper.getAuthor().equals(author)) {
-                newspaper.decreaseCount();
-                break;
-            }
-        }
-    }
-
-    public void returnNewspaper(String title, String author) {
-        for (Printable newspaper : newspapers) {
-            if (newspaper.getTitle().equals(title) && newspaper.getAuthor().equals(author)) {
-                newspaper.increaseCount();
-                break;
-            }
-        }
-    }
-
+    // проверка наличия ПИ в нашей библиотеке (используем в Employee)
     public List<Printable> getBooks() {
         return books;
     }
