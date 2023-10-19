@@ -133,21 +133,20 @@ class Ticket implements TicketPricing {
     // регистрация билетика
     public void regTicket(int numberTicket, Spectator spectator, Performance performance) {
         if (!isReg) {
-            setNumberTicket(numberTicket);
-            setShowName(performance.getShowName());
-            setLastName(spectator.getLastName());
-            setFirstName(spectator.getFirstName());
-            setMiddleName(spectator.getMiddleName());
-            setAgeRestriction(performance.getAgeRestriction());
-            calculateTicketPrice(sessionType, spectator.getAge(), getBasePrice());
-            setDate(performance.getDate());
-            setTime(performance.getTime());
-            setTime(time);
-
             // Проверяем возраст и возрастное ограничение
             if (spectator.getAge() >= performance.getAgeRestriction()) {
+                setNumberTicket(numberTicket);
+                setShowName(performance.getShowName());
+                setLastName(spectator.getLastName());
+                setFirstName(spectator.getFirstName());
+                setMiddleName(spectator.getMiddleName());
+                setAgeRestriction(performance.getAgeRestriction());
+                calculateTicketPrice(sessionType, spectator.getAge(), getBasePrice());
+                setDate(performance.getDate());
+                setTime(performance.getTime());
+                setTime(time);
                 System.out.println("Регистрация прошла успешно!\n");
-                printTicket(numberTicket);
+                printTicket();
                 System.out.println("Приятного просмотра!\n");
                 isReg = true;
             } else {
@@ -160,23 +159,22 @@ class Ticket implements TicketPricing {
     }
 
     // вывод самого билетика по номеру
-    public void printTicket(int numberTicket) {
+    public void printTicket() {
         System.out.printf("Билет номер %d\nНазвание представления %s\nДата %s\nВремя %s\nФамилия %s\nИмя %s\nОтчество %s\n" +
                         "Возрастное ограничение %s\n<Тип посадочного места> %s\nРяд %d\nМесто %d\nСтоимость базовая %.2f\n" +
-                        "Ваша скидка %s\nСтоимость вашего билета %.2f\n\n", numberTicket, getShowName(), getDate(), getTime(),
+                        "Ваша скидка %s\nСтоимость вашего билета %.2f\n\n", getNumberTicket(), getShowName(), getDate(), getTime(),
                 getLastName(), getFirstName(), getMiddleName(), getAgeRestriction(), getTypeOfSeat(), getNumberOfRow(),
                 getNumberOfSeat(), getBasePrice(), sessionType.getDiscount(),
                 calculateTicketPrice(sessionType, getAgeRestriction(), getBasePrice()));
     }
 
     // ну че удалим Леркин интересный выходной?
-    public void removeTicket(int numberTicket) {
-        if (isReg && this.numberTicket == numberTicket) {
-            this.numberTicket = 0;
+    public void removeTicket() {
+        if (isReg) {
+            System.out.printf("Билет с номером %d удален.\n", getNumberTicket());
             isReg = false;
-            System.out.printf("Билет с номером %d удален.\n", numberTicket);
         } else {
-            System.out.printf("Билет с номером %d не зарегистрирован!\n", numberTicket);
+            System.out.printf("Билет с номером %d не зарегистрирован!\n", getNumberTicket());
         }
     }
 

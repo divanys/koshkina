@@ -35,9 +35,11 @@ class Theatre {
                 break;
             }
         }
-        if (!isTicketExist) {
+        if (!isTicketExist && ticket.isReg()) {
             tickets.add(ticket);
             System.out.printf("Билет с номером %d зарегистрирован в театре!\n", ticket.getNumberTicket());
+        } else {
+            System.out.println("Билет не зарегистрирован в театре!");
         }
     }
 
@@ -60,7 +62,7 @@ class Theatre {
 
     public void printListAllTickets() {
         for (Ticket ticket : tickets) {
-            ticket.printTicket(ticket.getNumberTicket());
+            ticket.printTicket();
         }
     }
 
