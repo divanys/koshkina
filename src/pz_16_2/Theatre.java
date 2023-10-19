@@ -9,15 +9,26 @@ class Theatre {
     private ArrayList<Performance> performances = new ArrayList<>();
 
 
-    public void addSpectator(Spectator spectator) { spectators.add(spectator); }
+    public void addSpectator(Spectator spectator) {
+        spectators.add(spectator);
+    }
 
     public void addEmployee(Employee employee) {
         employees.add(employee);
     }
 
     public void addTicket(Ticket ticket) {
+        System.out.printf("Билетик с номером %d зарегистрирован в театре!\n", ticket.getNumberTicket());
         tickets.add(ticket);
     }
 
-    public void addPerformance(Performance performance) { performances.add(performance); }
+    public void addPerformance(Performance performance) {
+        performances.add(performance);
+    }
+
+    public void printListAllTickets() {
+        for (Ticket ticket : tickets) {
+            ticket.printTicket(ticket.getNumberTicket());
+        }
+    }
 }

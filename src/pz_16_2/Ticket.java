@@ -16,6 +16,8 @@ class Ticket implements TicketPricing {
     private int ageRestriction;
     private String showName;
     private String showType;
+    private String date;
+    private String time;
     private boolean isReg = false;
 
     public Ticket(SessionType sessionType, double basePrice, String typeOfSeat, int numberOfRow, int numberOfSeat) {
@@ -146,6 +148,22 @@ class Ticket implements TicketPricing {
         this.numberTicket = numberTicket;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
     // регистрация билетика
     public void regTicket(int numberTicket, Spectator spectator, Performance performance) {
         if (!isReg) {
@@ -157,6 +175,9 @@ class Ticket implements TicketPricing {
             setAgeRestriction(performance.getAgeRestriction());
             setDiscount(sessionType.getDiscount());
             calculateTicketPrice(sessionType, spectator.getAge(), getBasePrice());
+            setDate(performance.getDate());
+            setTime(performance.getTime());
+            setTime(time);
 
             System.out.println("Регистрация прошла успешно!\n");
             printTicket(numberTicket);
@@ -164,16 +185,15 @@ class Ticket implements TicketPricing {
             isReg = true;
         } else {
             System.out.println("Билет с такими данными уже зарегистрирован!");
-            printTicket(numberTicket);
         }
 
     }
 
     // вывод самого билетика по номеру
     public void printTicket(int numberTicket) {
-        System.out.printf("Билет номер %d\nНазвание представления %s\nФамилия %s\nИмя %s\nОтчество %s\n" +
+        System.out.printf("Билет номер %d\nНазвание представления %s\nДата %s\nВремя %s\nФамилия %s\nИмя %s\nОтчество %s\n" +
                         "Возрастное ограничение %s\n<Тип посадочного места> %s\nРяд %d\nМесто %d\nСтоимость базовая %.2f\n" +
-                        "Ваша скидка %s\nСтоимость вашего билета %.2f\n\n", numberTicket, getShowName(),
+                        "Ваша скидка %s\nСтоимость вашего билета %.2f\n\n", numberTicket, getShowName(), getDate(), getTime(),
                 getLastName(), getFirstName(), getMiddleName(), getAgeRestriction(), getTypeOfSeat(), getNumberOfRow(),
                 getNumberOfSeat(), getBasePrice(), sessionType.getDiscount(),
                 calculateTicketPrice(sessionType, getAgeRestriction(), getBasePrice()));
