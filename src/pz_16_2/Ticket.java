@@ -3,10 +3,8 @@ package pz_16_2;
 class Ticket implements TicketPricing {
     private int numberTicket;
     private SessionType sessionType;
-    private Spectator spectator;
     private double basePrice;
     private double price;
-    private double discount;
     private String typeOfSeat;
     private int numberOfRow;
     private int numberOfSeat;
@@ -15,7 +13,6 @@ class Ticket implements TicketPricing {
     private String firstName;
     private int ageRestriction;
     private String showName;
-    private String showType;
     private String date;
     private String time;
     private boolean isReg = false;
@@ -28,20 +25,12 @@ class Ticket implements TicketPricing {
         setNumberOfSeat(numberOfSeat);
     }
 
-    public SessionType getSessionType() {
-        return sessionType;
+    public boolean isReg() {
+        return isReg;
     }
 
     public void setSessionType(SessionType sessionType) {
         this.sessionType = sessionType;
-    }
-
-    public Spectator getSpectator() {
-        return spectator;
-    }
-
-    public void setSpectator(Spectator spectator) {
-        this.spectator = spectator;
     }
 
     public double getBasePrice() {
@@ -50,22 +39,6 @@ class Ticket implements TicketPricing {
 
     public void setBasePrice(double basePrice) {
         this.basePrice = basePrice;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public double getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(double discount) {
-        this.discount = discount;
     }
 
     public String getTypeOfSeat() {
@@ -132,13 +105,6 @@ class Ticket implements TicketPricing {
         this.showName = showName;
     }
 
-    public String getShowType() {
-        return showType;
-    }
-
-    public void setShowType(String showType) {
-        this.showType = showType;
-    }
 
     public int getNumberTicket() {
         return numberTicket;
@@ -173,20 +139,24 @@ class Ticket implements TicketPricing {
             setFirstName(spectator.getFirstName());
             setMiddleName(spectator.getMiddleName());
             setAgeRestriction(performance.getAgeRestriction());
-            setDiscount(sessionType.getDiscount());
             calculateTicketPrice(sessionType, spectator.getAge(), getBasePrice());
             setDate(performance.getDate());
             setTime(performance.getTime());
             setTime(time);
 
-            System.out.println("Регистрация прошла успешно!\n");
-            printTicket(numberTicket);
-            System.out.println("Приятного просмотра!\n");
-            isReg = true;
+            // Проверяем возраст и возрастное ограничение
+            if (spectator.getAge() >= performance.getAgeRestriction()) {
+                System.out.println("Регистрация прошла успешно!\n");
+                printTicket(numberTicket);
+                System.out.println("Приятного просмотра!\n");
+                isReg = true;
+            } else {
+                System.out.println("Извините, вам нельзя посетить это представление из-за возрастных ограничений.");
+                isReg = false;
+            }
         } else {
             System.out.println("Билет с такими данными уже зарегистрирован!");
         }
-
     }
 
     // вывод самого билетика по номеру
@@ -223,4 +193,5 @@ class Ticket implements TicketPricing {
         }
         return price;
     }
+
 }

@@ -3,32 +3,76 @@ package pz_16_2;
 import java.util.ArrayList;
 
 class Theatre {
-    private ArrayList<Spectator> spectators = new ArrayList<>();
-    private ArrayList<Employee> employees = new ArrayList<>();
-    private ArrayList<Ticket> tickets = new ArrayList<>();
-    private ArrayList<Performance> performances = new ArrayList<>();
+    private final ArrayList<Performer> performers = new ArrayList<>();
+    private final ArrayList<Ticket> tickets = new ArrayList<>();
+    private final ArrayList<Performance> performances = new ArrayList<>();
 
 
-    public void addSpectator(Spectator spectator) {
-        spectators.add(spectator);
-    }
-
-    public void addEmployee(Employee employee) {
-        employees.add(employee);
+    public void addPerformer(Performer performer) {
+        boolean isPerformerExist = false;
+        for (Performer existingPerformer : performers) {
+            if (existingPerformer.getLastName().equals(performer.getLastName()) &&
+                    existingPerformer.getFirstName().equals(performer.getFirstName()) &&
+                    existingPerformer.getMiddleName().equals(performer.getMiddleName())) {
+                System.out.printf("%s %s %s уже зарегистрирован как артист в театре.\n",
+                        performer.getLastName(), performer.getFirstName(), performer.getMiddleName());
+                isPerformerExist = true;
+                break;
+            }
+        }
+        if (!isPerformerExist) {
+            performer.printPerformer();
+            performers.add(performer);
+        }
     }
 
     public void addTicket(Ticket ticket) {
-        System.out.printf("Билетик с номером %d зарегистрирован в театре!\n", ticket.getNumberTicket());
-        tickets.add(ticket);
+        boolean isTicketExist = false;
+        for (Ticket existingTicket : tickets) {
+            if (existingTicket.getNumberTicket() == ticket.getNumberTicket()) {
+                System.out.printf("Билет с номером %d уже был зарегистрирован в театре.\n", ticket.getNumberTicket());
+                isTicketExist = true;
+                break;
+            }
+        }
+        if (!isTicketExist) {
+            tickets.add(ticket);
+            System.out.printf("Билет с номером %d зарегистрирован в театре!\n", ticket.getNumberTicket());
+        }
     }
 
     public void addPerformance(Performance performance) {
-        performances.add(performance);
+        boolean isPerformanceExist = false;
+        for (Performance existingPerformance : performances) {
+            if (existingPerformance.getShowName().equals(performance.getShowName())) {
+                System.out.printf("Представление с названием %s уже зарегистрировано в театре и не будет добавлено.\n", performance.getShowName());
+                isPerformanceExist = true;
+                break;
+            }
+        }
+        if (!isPerformanceExist) {
+            performances.add(performance);
+            System.out.printf("%s с названием %s зарегистрировано в театре!\nДата %s время %s\n",
+                    performance.getShowType(), performance.getShowName(), performance.getDate(), performance.getTime());
+        }
     }
+
 
     public void printListAllTickets() {
         for (Ticket ticket : tickets) {
             ticket.printTicket(ticket.getNumberTicket());
+        }
+    }
+
+    public void printListAllPerformances() {
+        for (Performance performance : performances) {
+            performance.printPerformance();
+        }
+    }
+
+    public void printListAllPerformers() {
+        for (Performer performer : performers) {
+            performer.printPerformer();
         }
     }
 }

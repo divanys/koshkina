@@ -15,7 +15,6 @@ public class Performance {
         setTime(time);
     }
 
-    // Геттеры и сеттеры для date и time
     public String getDate() {
         return date;
     }
@@ -31,8 +30,6 @@ public class Performance {
     public void setTime(String time) {
         this.time = time;
     }
-
-    // (остальные методы как у вас)
 
     public void setShowType(String showType) {
         this.showType = showType;
@@ -56,5 +53,10 @@ public class Performance {
 
     public String getShowName() {
         return showName;
+    }
+
+    public void printPerformance() {
+        System.out.printf("Тип представления: %s\nНазвание представления: %s\nВозрастное ограничение: %d\nДата: %s\nВремя: %s\n",
+                getShowType(), getShowName(), getAgeRestriction(), getDate(), getTime());
     }
 }
