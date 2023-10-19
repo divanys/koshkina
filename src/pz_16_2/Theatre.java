@@ -6,10 +6,10 @@ class Theatre {
     private ArrayList<Spectator> spectators = new ArrayList<>();
     private ArrayList<Employee> employees = new ArrayList<>();
     private ArrayList<Ticket> tickets = new ArrayList<>();
+    private ArrayList<Performance> performances = new ArrayList<>();
 
-    public void addSpectator(Spectator spectator) {
-        spectators.add(spectator);
-    }
+
+    public void addSpectator(Spectator spectator) { spectators.add(spectator); }
 
     public void addEmployee(Employee employee) {
         employees.add(employee);
@@ -19,4 +19,5 @@ class Theatre {
         tickets.add(ticket);
     }
 
+    public void addPerformance(Performance performance) { performances.add(performance); }
 }

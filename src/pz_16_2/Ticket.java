@@ -2,14 +2,12 @@ package pz_16_2;
 
 class Ticket implements TicketPricing {
     private SessionType sessionType;
-    private String showName;
     private Spectator spectator;
     private double price;
     private double discount;
 
     public Ticket(SessionType sessionType, String showName, Spectator spectator, double price, double discount) {
         setSessionType(sessionType);
-        setShowName(showName);
         setSpectator(spectator);
         setPrice(price);
         setDiscount(discount);
@@ -21,14 +19,6 @@ class Ticket implements TicketPricing {
 
     public void setSessionType(SessionType sessionType) {
         this.sessionType = sessionType;
-    }
-
-    public String getShowName() {
-        return showName;
-    }
-
-    public void setShowName(String showName) {
-        this.showName = showName;
     }
 
     public Spectator getSpectator() {
@@ -55,8 +45,32 @@ class Ticket implements TicketPricing {
         this.discount = discount;
     }
 
+    // регистрация билетика
+    public void regTicket(int numberTicket, Spectator spectator) {
+
+        System.out.printf("Билет номер %d\nНазвание представления %s\nФамилия %s\nИмя %s\nОтчество %s\n" +
+                "Возрастное ограничение %s\n<Тип посадочного места> %s\nРяд %d\nМесто %d\nСтоимость %.2f\n" +
+                "Скидка %s\n\nПриятного просмотра!\n", numberTicket, getShowName(), spectator.getFirstName(),
+                spectator.getLastName(), spectator.getMiddleName(),);
+    }
+
+    // вывод самого билетика для конкретного пользователя
+    public void printTicket(String firstName) {
+
+    }
+
+
     @Override
     public double calculateTicketPrice(SessionType sessionType, int age, double basePrice) {
-        return 0;
+        switch (sessionType) {
+            case WEEKDAY:
+            case WEEKEND:
+                price = basePrice * sessionType.getDiscount();
+                break;
+            case HOLIDAY:
+                price = basePrice;
+                break;
+        }
+        return price;
     }
 }
