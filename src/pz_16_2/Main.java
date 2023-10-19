@@ -9,9 +9,9 @@ public class Main {
         Ticket ticket1 = new Ticket(SessionType.WEEKDAY, 700, "Амфитеатр", 3, 16);
         Ticket ticket2 = new Ticket(SessionType.WEEKDAY, 700, "Амфитеатр", 3, 15);
         ticket1.regTicket(1, spectator1, performance1);
+        ticket2.regTicket(2, spectator2, performance1);
         theatre.addTicket(ticket1);
         theatre.addTicket(ticket2);
-        ticket2.regTicket(2, spectator2, performance1);
 //        ticket1.printTicket(1);
         theatre.printListAllTickets();
     }
