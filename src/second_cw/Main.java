@@ -75,5 +75,11 @@ public class Main {
 
         System.out.println("\nДобавляем второй заказ в магазин");
         store.addOrder(order2, 0);
+
+        System.out.println("Применяем скидку");
+        order2.applyDiscount(product1, 10);
+
+        System.out.println("Блок акций и реклам");
+        order1.getPromotionDetails();
     }
 }
