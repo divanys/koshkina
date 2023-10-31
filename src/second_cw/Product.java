@@ -1,13 +1,5 @@
 package second_cw;
 
-//1) название
-//        2) категория
-//        3) цена
-//        4) количество в упаковке/масса нетто
-//        5) дата изготовления
-//        6) годен до
-//        7) производитель
-//    Методы: getInfo() (возвращает информацию о продукте), calculateDiscount(int discountPercentage) (вычисляет сумму с учетом скидки).
 class Product extends Category {
     private String title;
     private String manufacturer;

@@ -5,22 +5,11 @@ abstract class Category {
     private boolean packageQuantityORNetWeight;
     public Category(String categoryName, boolean packageQuantityORNetWeight) {
         setCategotyName(categoryName);
-        setPackageQuantityORNetWeight(packageQuantityORNetWeight);
-    }
+        setPackageQuantityORNetWeight(packageQuantityORNetWeight); }
+    private void setPackageQuantityORNetWeight( boolean packageQuantityORNetWeight) {this.packageQuantityORNetWeight = packageQuantityORNetWeight; }
+    private void setCategotyName(String categoryName) { this.categoryName = categoryName; }
 
-    private void setPackageQuantityORNetWeight(boolean packageQuantityORNetWeight) {
-        this.packageQuantityORNetWeight = packageQuantityORNetWeight;
-    }
+    public String getCategoryName() { return categoryName; }
 
-    private void setCategotyName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public boolean isPackageQuantityORNetWeight() {
-        return packageQuantityORNetWeight;
-    }
+    public boolean isPackageQuantityORNetWeight() { return packageQuantityORNetWeight; }
 }
