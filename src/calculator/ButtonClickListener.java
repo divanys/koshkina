@@ -17,10 +17,6 @@ public class ButtonClickListener implements ActionListener {
     public double evaluateExpression(String expression) {
         String[] tokens = expression.split(" ");
 
-        if (tokens.length != 3) {
-            return Double.NaN;
-        }
-
         double num1 = Double.parseDouble(tokens[0]);
         String operator = tokens[1];
         double num2 = Double.parseDouble(tokens[2]);
@@ -52,16 +48,17 @@ public class ButtonClickListener implements ActionListener {
             }
         } else if (command.matches("[+\\-*/]")) {
             if (!isLastInputOperator) {
-                textField.setText(textField.getText() + " " + command);
+                textField.setText(textField.getText() + " " + command + " ");
                 isLastInputOperator = true;
             }
         } else if (command.equals("=")) {
             try {
+                System.out.println(textField.getText());
                 double result = evaluateExpression(textField.getText());
                 textField.setText(Double.toString(result));
-                isLastInputOperator = false;
             } catch (Exception ex) {
                 textField.setText("Error");
+                System.out.println(ex.getMessage());
             }
         } else if (command.equals("C")) {
             textField.setText("");

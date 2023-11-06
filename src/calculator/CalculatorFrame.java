@@ -4,11 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CalculatorFrame extends JFrame {
-    private CalculatorLogic calculator;
 
     public CalculatorFrame() {
         setTitle("калькулятор абэмэ");
 
+        CalculatorLogic calculator = new CalculatorLogic();
         // поле ввода
         JTextField textField = new JTextField(20);
         textField.setEditable(false); // запрет на редактирование
@@ -29,8 +29,6 @@ public class CalculatorFrame extends JFrame {
             button.addActionListener(new ButtonClickListener(textField, calculator));
             buttonPanel.add(button);
         }
-
-        calculator = new CalculatorLogic();
 
         // Создаем контейнер и добавляем в него элементы
         Container container = getContentPane();
