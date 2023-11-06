@@ -65,6 +65,35 @@ public class ButtonClickListener implements ActionListener {
             isLastInputOperator = false;
         } else if (command.equals(".")) {
             textField.setText(textField.getText() + ".");
+        } else if (command.equals("←")) {  // backspace
+            String currentText = textField.getText();
+            if (!currentText.isEmpty()) {
+                textField.setText(currentText.substring(0, currentText.length() - 1));
+            }
+        } else if (command.equals("√")) {
+            try {
+                double num = Double.parseDouble(textField.getText());
+                double result = calculator.squareRoot(num);
+                textField.setText(Double.toString(result));
+            } catch (Exception ex) {
+                textField.setText("Error");
+                System.out.println(ex.getMessage());
+            }
+        }else if (command.equals("^")) {
+            try {
+                double num = Double.parseDouble(textField.getText());
+                String exponentString = JOptionPane.showInputDialog("Введите степень:");
+                if (exponentString != null && !exponentString.isEmpty()) {
+                    double exponent = Double.parseDouble(exponentString);
+                    double result = calculator.power(num, exponent);
+                    textField.setText(Double.toString(result));
+                } else {
+                    textField.setText("Error");
+                }
+            } catch (NumberFormatException ex) {
+                textField.setText("Error");
+                System.out.println(ex.getMessage());
+            }
         }
     }
 }

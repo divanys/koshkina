@@ -15,12 +15,13 @@ public class CalculatorFrame extends JFrame {
         textField.setHorizontalAlignment(SwingConstants.RIGHT); // Выравнивание текста по правому краю
 
         // Панель для кнопок
-        JPanel buttonPanel = new JPanel(new GridLayout(4, 5));
+        JPanel buttonPanel = new JPanel(new GridLayout(5, 5));
         String[] buttonLabels = {
                 "7", "8", "9", "/",
                 "4", "5", "6", "*",
                 "1", "2", "3", "-",
-                "C", "0", ".", "=", "+"
+                "0", ".", "=", "+",
+                "√", "^", "←", "C"
         };
 
         // Создаем и добавляем кнопки на панель
