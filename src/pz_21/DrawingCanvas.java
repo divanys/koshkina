@@ -21,33 +21,28 @@ public class DrawingCanvas extends JComponent {
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
         Graphics2D graphics2D = (Graphics2D) graphics;
-
         // body
         graphics2D.setColor(Color.DARK_GRAY); // Устанавливает цвет для тела светофора
         // fillRoundRect Используется для рисования закрашенного (заполненного) прямоугольника с закругленными углам
         graphics2D.fillRoundRect(300, 240, 130, 360, 25, 25);
         graphics2D.fillRoundRect(335, 603, 60, 65, 15, 15);
-
         // lights
-        red.drawLight(graphics2D);
-        yellow.drawLight(graphics2D);
-        green.drawLight(graphics2D);
-
+        red.drawLight(graphics2D); // рисуем красный круг
+        yellow.drawLight(graphics2D); // рисуем жёлтый круг
+        green.drawLight(graphics2D); // рисуем зелёный круг
         // hat
-
         Path2D.Double hat = new Path2D.Double();
         hat.moveTo(320, 230); // используется для создания пути
         hat.lineTo(410, 230); // используется для рисования линии от текущей позиции до указанной точки
         hat.quadTo(410.5, 225.5, 410, 225); // используется для рисования квадратичной кривой Безье
         hat.curveTo(390, 215, 330, 215, 320, 225); // используется для рисования кубической кривой Безье
-        hat.quadTo(315.5, 225.5, 320, 230);
-        graphics2D.setColor(Color.DARK_GRAY);
-        graphics2D.fill(hat);
-
+        hat.quadTo(315.5, 225.5, 320, 230);  // используется для рисования квадратичной кривой Безье
+        graphics2D.setColor(Color.DARK_GRAY); // указавыем цвет
+        graphics2D.fill(hat);// Заполняет указанным цветом
         // sideTriangles
-        red.drawEar(graphics2D);
-        yellow.drawEar(graphics2D);
-        green.drawEar(graphics2D);
+        red.drawEar(graphics2D); // рисуем ухи от красного круга
+        yellow.drawEar(graphics2D); // рисуем ухи от жёлтого круга
+        green.drawEar(graphics2D); // рисуем ухи от зелёного круга
     }
 
     @Override
