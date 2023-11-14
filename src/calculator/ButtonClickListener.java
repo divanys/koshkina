@@ -79,7 +79,7 @@ public class ButtonClickListener implements ActionListener {
                 textField.setText("Error");
                 System.out.println(ex.getMessage());
             }
-        }else if (command.equals("^")) {
+        } else if (command.equals("^")) {
             try {
                 double num = Double.parseDouble(textField.getText());
                 String exponentString = JOptionPane.showInputDialog("Введите степень:");
